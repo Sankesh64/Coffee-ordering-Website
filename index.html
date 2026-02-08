@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee - Your Daily Dose of Happiness</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- GSAP Animation Library -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="cart-styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <header>
+    <nav class="navbar section-content">
+     <a href="#home" class="nav-logo">
+        <h2 class="logo-text">☕ Coffee</h2>
+     </a>
+     <ul class="nav-menu">
+        <li class="nav-item">
+            <a href="#home" class="nav-link">Home</a>
+        </li>
+        <li class="nav-item">
+            <a href="#about" class="nav-link">About</a>
+        </li>
+        <li class="nav-item">
+            <a href="#menu" class="nav-link">Menu</a>
+        </li>
+        <li class="nav-item">
+            <a href="#testimonials" class="nav-link">Testimonials</a>
+        </li>
+        <li class="nav-item">
+            <a href="#gallery" class="nav-link">Gallery</a>
+        </li>
+        <li class="nav-item">
+            <a href="#contact" class="nav-link">Contact</a>
+        </li>
+        <!-- NEW: Cart Icon -->
+        <li class="nav-item">
+            <a href="order.html" class="nav-link cart-icon-wrapper">
+                🛒
+                <span class="cart-badge" style="display: none;">0</span>
+            </a>
+        </li>
+     </ul>
+     <button class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+     </button>
+    </nav>
+</header>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="hero-section" id="home">
+           <div class="section-content">
+            <div class="hero-details">
+                <h2 class="title">Best Coffee</h2>
+                <h3 class="subtitle">Make Your Day Great with Our Special Coffee</h3>
+                <p class="description">Welcome to our Coffee paradise, where
+                    every bean tells a story and every cup sparks joy.
+                </p>
+                <div class="buttons">
+                    <a href="#menu" class="button order-now">Order Now</a>
+                    <a href="#contact" class="button contact-us">Contact Us</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <img src="img/coffee-hero-section.png" alt="Coffee Hero" class="hero-image">
+            </div>
+           </div> 
+        </section>
+
+        <!-- About Section -->
+        <section class="about-section" id="about">
+            <div class="section-content">
+                <div class="about-image-wrapper">
+                    <img src="img/about-image.jpg" alt="About Coffee" class="about-image">
+                </div>
+                <div class="about-details">
+                    <h2 class="section-title">About Us</h2>
+                    <p class="text">
+                        We are passionate about serving the finest coffee experience. Our beans are carefully selected from the best farms around the world, ensuring every cup is a masterpiece.
+                    </p>
+                    <p class="text">
+                        With years of expertise and dedication to quality, we've created a warm and inviting space where coffee lovers can relax, connect, and enjoy exceptional brews.
+                    </p>
+                    <div class="about-buttons">
+                        <a href="#menu" class="button learn-more">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Coffee Varieties Section -->
+        <section class="varieties-section" id="varieties">
+            <div class="section-content">
+                <h2 class="section-title">Our Coffee Varieties</h2>
+                <p class="section-description">Explore our premium coffee selections from around the world</p>
+                
+                <div class="varieties-container">
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">Popular</div>
+                            <img src="img/espresso.jpg" alt="Espresso" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Espresso</h3>
+                            <p class="variety-origin">Origin: Italy</p>
+                            <p class="variety-description">
+                                Rich, concentrated coffee shot with intense flavor and creamy crema. Perfect for a quick energy boost.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Dark
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$3.99</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">Best Seller</div>
+                            <img src="img/hot-beverages.png" alt="Cappuccino" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Cappuccino</h3>
+                            <p class="variety-origin">Origin: Italy</p>
+                            <p class="variety-description">
+                                Perfect blend of espresso, steamed milk, and velvety foam. A classic favorite for coffee lovers.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Medium
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$4.99</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">New</div>
+                            <img src="img/OIP.jpg" alt="Latte" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Caffe Latte</h3>
+                            <p class="variety-origin">Origin: Italy</p>
+                            <p class="variety-description">
+                                Smooth and creamy espresso with steamed milk. Mild flavor perfect for any time of day.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Medium
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$4.49</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">Premium</div>
+                            <img src="img/Americano.jpeg" alt="Americano" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Americano</h3>
+                            <p class="variety-origin">Origin: USA</p>
+                            <p class="variety-description">
+                                Espresso diluted with hot water for a smooth, bold flavor. Simple yet sophisticated.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Medium-Dark
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$3.49</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">Special</div>
+                            <img src="img/mocha.jpg" alt="Mocha" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Mocha</h3>
+                            <p class="variety-origin">Origin: Yemen</p>
+                            <p class="variety-description">
+                                Espresso meets chocolate in this delightful blend. Sweet, rich, and absolutely indulgent.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Medium
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$5.49</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="variety-card">
+                        <div class="card-image-wrapper">
+                            <div class="card-badge">Seasonal</div>
+                            <img src="img/cold-beverages.png" alt="Cold Brew" class="variety-image">
+                        </div>
+                        <div class="card-content">
+                            <h3 class="variety-name">Cold Brew</h3>
+                            <p class="variety-origin">Origin: Japan</p>
+                            <p class="variety-description">
+                                Slow-steeped for 12+ hours. Smooth, sweet, and less acidic. Refreshingly perfect.
+                            </p>
+                            <div class="variety-details">
+                                <span class="detail-item">
+                                    <strong>Strength:</strong> ⭐⭐⭐⭐
+                                </span>
+                                <span class="detail-item">
+                                    <strong>Roast:</strong> Light-Medium
+                                </span>
+                            </div>
+                            <div class="card-footer">
+                                <span class="variety-price">$4.99</span>
+                                <button class="order-btn">Order Now</button>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+      
+        <!-- Menu Section -->
+        <section class="menu-section" id="menu">
+            <div class="section-content">
+                <h2 class="section-title">Our Menu</h2>
+                <p class="section-description">Discover our delicious selection of beverages and treats</p>
+                
+                <div class="menu-list">
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/hot-beverages.png" alt="Hot Beverages" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Hot Beverages</h3>
+                        <p class="menu-text">Espresso, Cappuccino, Latte, Americano, and more premium hot drinks</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/cold-beverages.png" alt="Cold Beverages" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Cold Beverages</h3>
+                        <p class="menu-text">Iced Coffee, Frappuccino, Cold Brew, and refreshing iced drinks</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/refreshment.png" alt="Refreshments" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Refreshments</h3>
+                        <p class="menu-text">Fresh juices, smoothies, and healthy refreshing beverages</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/special-combo.png" alt="Special Combo" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Special Combo</h3>
+                        <p class="menu-text">Best value combos with coffee and delicious snacks</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/desserts.png" alt="Desserts" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Desserts</h3>
+                        <p class="menu-text">Cakes, pastries, cookies, and sweet treats to complement your coffee</p>
+                    </div>
+
+                    <div class="menu-item">
+                        <div class="menu-image-wrapper">
+                            <img src="img/burger-frenchfries.png" alt="Snacks" class="menu-image">
+                        </div>
+                        <h3 class="menu-name">Snacks</h3>
+                        <p class="menu-text">Burgers, sandwiches, fries, and savory bites</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section class="testimonials-section" id="testimonials">
+            <div class="section-content">
+                <h2 class="section-title">What Our Customers Say</h2>
+                <p class="section-description">Real experiences from our beloved coffee enthusiasts</p>
+                
+                <div class="testimonials-list">
+                    <div class="testimonial-item">
+                        <img src="img/user-1.jpg" alt="Customer 1" class="testimonial-image">
+                        <p class="testimonial-text">
+                            "The best coffee in town! The atmosphere is cozy and the staff is incredibly friendly. My go-to place every morning!"
+                        </p>
+                        <h3 class="customer-name">Sarah Johnson</h3>
+                        <p class="customer-role">Coffee Enthusiast</p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="img/user-2.jpg" alt="Customer 2" class="testimonial-image">
+                        <p class="testimonial-text">
+                            "Amazing quality and taste! Their cappuccino is absolutely divine. I've been a regular customer for 2 years now."
+                        </p>
+                        <h3 class="customer-name">Michael Chen</h3>
+                        <p class="customer-role">Regular Customer</p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="img/user-3.jpg" alt="Customer 3" class="testimonial-image">
+                        <p class="testimonial-text">
+                            "Perfect spot for meetings and work. Great WiFi, comfortable seating, and of course, excellent coffee!"
+                        </p>
+                        <h3 class="customer-name">Emily Davis</h3>
+                        <p class="customer-role">Freelancer</p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="img/user-4.jpg" alt="Customer 4" class="testimonial-image">
+                        <p class="testimonial-text">
+                            "Their cold brew is exceptional! Love the variety on the menu. This place never disappoints."
+                        </p>
+                        <h3 class="customer-name">David Martinez</h3>
+                        <p class="customer-role">Coffee Lover</p>
+                    </div>
+
+                    <div class="testimonial-item">
+                        <img src="img/user-5.jpg" alt="Customer 5" class="testimonial-image">
+                        <p class="testimonial-text">
+                            "A hidden gem! The desserts pair perfectly with their coffee. Highly recommend the chocolate cake!"
+                        </p>
+                        <h3 class="customer-name">Lisa Anderson</h3>
+                        <p class="customer-role">Sweet Tooth</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="gallery-section" id="gallery">
+            <div class="section-content">
+                <h2 class="section-title">Our Gallery</h2>
+                <p class="section-description">A visual journey through our coffee experience</p>
+                
+                <div class="gallery-list">
+                    <div class="gallery-item">
+                        <img src="img/gallery-1.jpg" alt="Gallery Image 1" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-2.jpg" alt="Gallery Image 2" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-3.jpg" alt="Gallery Image 3" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-4.jpg" alt="Gallery Image 4" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-5.jpg" alt="Gallery Image 5" class="gallery-image">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="img/gallery-6.jpg" alt="Gallery Image 6" class="gallery-image">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section" id="contact">
+            <div class="section-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">We'd love to hear from you</p>
+                
+                <div class="contact-container">
+                    <div class="contact-form-wrapper">
+                        <form class="contact-form">
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Your Name" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" class="form-input" placeholder="Your Email" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" class="form-input" placeholder="Subject" required>
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-input" rows="5" placeholder="Your Message" required></textarea>
+                            </div>
+                            <button type="submit" class="button submit-button">Send Message</button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info-wrapper">
+                        <div class="contact-info-item">
+                            <h3 class="info-title">📍 Address</h3>
+                            <p class="info-text">123 Coffee Street, Bean City, CA 90210</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <h3 class="info-title">📞 Phone</h3>
+                            <p class="info-text">+1 (555) 123-4567</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <h3 class="info-title">✉️ Email</h3>
+                            <p class="info-text">hello@coffee.com</p>
+                        </div>
+                        <div class="contact-info-item">
+                            <h3 class="info-title">⏰ Hours</h3>
+                            <p class="info-text">Mon - Fri: 7:00 AM - 8:00 PM<br>Sat - Sun: 8:00 AM - 9:00 PM</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="section-content">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">☕ Coffee</h3>
+                    <p class="footer-text">
+                        Your daily dose of happiness. We serve the finest coffee made with love and passion.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#menu">Menu</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Contact</h3>
+                    <ul class="footer-links">
+                        <li>123 Coffee Street</li>
+                        <li>+1 (555) 123-4567</li>
+                        <li>hello@coffee.com</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3 class="footer-title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Instagram</a>
+                        <a href="#" class="social-link">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Coffee. All rights reserved. | Designed with ❤️</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="enhanced-script.js"></script>
+
+    <script src="script.js"></script>
+</body>
+</html>
