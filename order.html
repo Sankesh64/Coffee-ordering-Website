@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cart & Checkout - Coffee</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="cart-styles.css">
+</head>
+<body>
+  <header>
+    <nav class="navbar section-content">
+      <a href="index.html" class="nav-logo">
+        <h2 class="logo-text">☕ Coffee</h2>
+      </a>
+      <ul class="nav-menu active">
+        <li class="nav-item"><a href="index.html#menu" class="nav-link">Back To Menu</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="checkout-page">
+    <section class="section-content">
+      <h1 class="section-title">Your Cart</h1>
+      <div id="cart-items" class="cart-items"></div>
+      <div id="empty-cart" class="empty-cart">Your cart is empty. Add something delicious from the menu.</div>
+    </section>
+
+    <section class="section-content checkout-block">
+      <h2 class="section-title">Checkout</h2>
+      <div class="order-summary">
+        <p>Subtotal: <strong id="subtotal">Rs 0.00</strong></p>
+        <p>Delivery Fee: <strong id="delivery">Rs 40.00</strong></p>
+        <p>Total: <strong id="total">Rs 0.00</strong></p>
+      </div>
+
+      <form id="checkout-form" class="contact-form">
+        <div class="form-group"><input class="form-input" id="name" placeholder="Your Name" required></div>
+        <div class="form-group"><input class="form-input" id="phone" placeholder="Phone Number" required></div>
+        <div class="form-group"><input class="form-input" id="address" placeholder="Delivery Address" required></div>
+        <div class="form-group"><textarea class="form-input" id="note" rows="4" placeholder="Special instructions (optional)"></textarea></div>
+        <button class="button submit-button" type="submit">Place Order</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="enhanced-script.js"></script>
+  <script>
+    const DELIVERY_FEE = 40;
+
+    function money(value) {
+      return `Rs ${value.toFixed(2)}`;
+    }
+
+    function renderCart() {
+      const itemsNode = document.getElementById("cart-items");
+      const emptyNode = document.getElementById("empty-cart");
+      const cart = window.CoffeeApp.getCart();
+
+      if (!cart.length) {
+        itemsNode.innerHTML = "";
+        emptyNode.style.display = "block";
+      } else {
+        emptyNode.style.display = "none";
+        itemsNode.innerHTML = cart.map((item) => `
+          <article class="cart-item">
+            <img src="${item.image || ""}" alt="${item.name}">
+            <div class="cart-details">
+              <h3>${item.name}</h3>
+              <p>${money(item.price)} each</p>
+              <div class="qty-row">
+                <button type="button" data-action="dec" data-id="${item.id}">-</button>
+                <span>${item.quantity}</span>
+                <button type="button" data-action="inc" data-id="${item.id}">+</button>
+                <button type="button" class="remove" data-action="remove" data-id="${item.id}">Remove</button>
+              </div>
+            </div>
+          </article>
+        `).join("");
+      }
+
+      const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      const delivery = subtotal === 0 || subtotal >= 500 ? 0 : DELIVERY_FEE;
+      const total = subtotal + delivery;
+      document.getElementById("subtotal").textContent = money(subtotal);
+      document.getElementById("delivery").textContent = money(delivery);
+      document.getElementById("total").textContent = money(total);
+      return { cart, subtotal, delivery, total };
+    }
+
+    document.addEventListener("click", (event) => {
+      const button = event.target.closest("button[data-action]");
+      if (!button) return;
+      const { action, id } = button.dataset;
+      const cart = window.CoffeeApp.getCart();
+      const index = cart.findIndex((item) => item.id === id);
+      if (index === -1) return;
+
+      if (action === "inc") cart[index].quantity += 1;
+      if (action === "dec") cart[index].quantity = Math.max(1, cart[index].quantity - 1);
+      if (action === "remove") cart.splice(index, 1);
+
+      window.CoffeeApp.setCart(cart);
+      renderCart();
+    });
+
+    document.getElementById("checkout-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const { cart, subtotal, delivery, total } = renderCart();
+      if (!cart.length) {
+        window.CoffeeApp.showToast("Cart is empty.", true);
+        return;
+      }
+
+      const order = {
+        id: `order-${Date.now()}`,
+        customer: {
+          name: document.getElementById("name").value.trim(),
+          phone: document.getElementById("phone").value.trim(),
+          address: document.getElementById("address").value.trim(),
+          note: document.getElementById("note").value.trim(),
+        },
+        items: cart,
+        subtotal,
+        deliveryFee: delivery,
+        total,
+        status: "placed",
+        createdAt: new Date().toISOString(),
+      };
+
+      const orders = window.CoffeeApp.readStorage(window.CoffeeApp.STORAGE_KEYS.orders, []);
+      orders.unshift(order);
+      window.CoffeeApp.writeStorage(window.CoffeeApp.STORAGE_KEYS.orders, orders);
+      window.CoffeeApp.setCart([]);
+      event.target.reset();
+      renderCart();
+      window.CoffeeApp.showToast("Order placed and saved in local storage.");
+    });
+
+    document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+</body>
+</html>
